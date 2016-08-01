@@ -17,11 +17,11 @@ class Orthography: NSObject {
     var pu_pinyin: [String:(combined:String, base:String, tone:String)]
     
     var pu_bopomofo_partial: [String:String]
-    var pu_bopomofo_whole: [String:String]!
-    var pu_bopomofo_tone: [String:String]!
+    var pu_bopomofo_whole: [String:String]
+    var pu_bopomofo_tone: [String:String]
 
     
-    override init() {
+    private override init() {
         
         /// orthography_pu_pinyin
         let arrays = Orthography.loadArrays("orthography_pu_pinyin", ext: "tsv")
@@ -34,7 +34,12 @@ class Orthography: NSObject {
         }
         
         /// orthography_pu_bopomofo
-        let arrays_pu_bopomofo = Orthography.loadFileContent("orthography_pu_bopomofo", ext: "tsv")
+//        let arrays_pu_bopomofo = Orthography.loadFileContent("orthography_pu_bopomofo", ext: "tsv")
+        
+        pu_pinyin = [:]
+        pu_bopomofo_partial = [:]
+        pu_bopomofo_whole = [:]
+        pu_bopomofo_tone = [:]
         
     }
 
@@ -76,7 +81,7 @@ class Orthography: NSObject {
             range = r
         }
         
-        varOrigin.replaceRange(range!, with: Orthography.pu_pinyin["\(base)\(tone)"]?.combined ?? "*")
+        varOrigin.replaceRange(range!, with: Orthography.sharedInstance.pu_pinyin["\(base)\(tone)"]?.combined ?? "*")
         
         
         

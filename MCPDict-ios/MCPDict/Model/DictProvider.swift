@@ -129,7 +129,7 @@ class DictProvider {
         
     }
     
-    func queryOne( oneWord : String, mode : SearchMode, extraArguments : [SearchArgument]) -> [DictModel] {
+    private func queryOne( oneWord : String, mode : SearchMode, extraArguments : [SearchArgument]) -> [DictModel] {
         
         // KuangxYonhOnly
         var isKuangxYonhOnly:Expression<Bool?> = Expression<Bool?>(value: true)
@@ -158,7 +158,8 @@ class DictProvider {
         return queryOneWordByQuery(query)
     }
     
-    func queryOneWordByQuery( query: QueryType) -> [DictModel] {
+    
+    private func queryOneWordByQuery( query: QueryType) -> [DictModel] {
         
         let rows = DBHelper.sharedInstance.query(query)
         var models: [DictModel] = []

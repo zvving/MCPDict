@@ -20,9 +20,12 @@ class DictProviderTests: XCTestCase {
         super.tearDown()
     }
 
-    func testSearch() {
-//        let rs = DictProvider.sharedInstance.queryBy("曾", model: SearchMode.HZ, extraArguments: [])
-//        print(rs)
+    func testProvider() {
+        
+        let rs = DictProvider.sharedInstance.query("铭", mode: SearchMode.HZ, extraArguments: [])
+        print(rs)
+        
+        
     }
 
     func testPerformanceExample() {

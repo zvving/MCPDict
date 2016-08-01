@@ -73,7 +73,13 @@ class DictModel: CustomStringConvertible {
     
     var description: String {
         get {
-            return "[+U\(unicode)]\(hz):"
+            let s = "+++\n[+U\(unicode)]\(hz):\n" +
+                "\tmc:\(mc)\n\tpu:\(pu)\n\tct:\(ct)\n\tsh:\(sh)\n\tmn:\(mn)\n" +
+                "\tkr:\(kr)\n\tvn:\(vn)\n\tjp_go:\(jp_go)\n\tjp_kan:\(jp_kan)\n" +
+                "\tjp_tou:\(jp_tou)\n\tjp_kwan:\(jp_kwan)\n\tjp_other:\(jp_other)\n" +
+                "---\n"
+            
+            return s
         }
     }
     
