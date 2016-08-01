@@ -6,3 +6,5 @@ publish
 jarlist.cache
 lint.xml
 pretty.py
+MCPDict-ios/Pods
+MCPDict-ios/Resource
