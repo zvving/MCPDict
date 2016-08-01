@@ -1,0 +1,33 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, '9.0'
+# Uncomment this line if you're using Swift
+use_frameworks!
+
+
+pod 'ReactiveCocoa', '~> 4.1.0'
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'Alamofire', '~> 3.3.1'
+pod 'SQLite.swift', '~> 0.10.1'
+pod 'Permission'
+pod 'ChameleonFramework/Swift'
+pod 'CSwiftV', '~> 0.0.5'
+
+
+def testing_pods
+    pod 'Quick'
+    pod 'Nimble'
+end
+
+
+target 'MCPDict' do
+
+end
+
+target 'MCPDictTests' do
+
+end
+
+target 'MCPDictUITests' do
+
+end
+
