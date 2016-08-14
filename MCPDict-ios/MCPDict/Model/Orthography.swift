@@ -13,6 +13,13 @@ class Orthography: NSObject {
     
     static let sharedInstance = Orthography()
     
+    // mc
+    
+    var mc_initials: [String:String]
+    var mc_initials_keys: [String]
+    
+    var mc_finals: [String:(se:String, deng:String, hu:String, yun:String)]
+    var mc_bieng_siyix: [String:String]
     
     // pu
     var pu_pinyin: [String:(combined:String, base:String, tone:String)]
@@ -38,6 +45,11 @@ class Orthography: NSObject {
     
     private override init() {
         
+        mc_initials = [:]
+        mc_initials_keys = []
+        mc_finals = [:]
+        mc_bieng_siyix = [:]
+        
         pu_pinyin = [:]
         pu_bopomofo_partial = [:]
         pu_bopomofo_whole = [:]
@@ -50,9 +62,31 @@ class Orthography: NSObject {
         jp_hepburn = [:]
         jp_hepburn_keys = []
         
+        // mc
+        
+        var arrays = Orthography.loadArrays("orthography_mc_initials", ext: "tsv")
+        for row in arrays {
+            mc_initials[row[0]] = row[1];
+        }
+        mc_initials_keys = mc_initials.keys.sort { (s0, s1) -> Bool in
+            s0.characters.count > s1.characters.count
+        }
+        arrays = Orthography.loadArrays("orthography_mc_finals", ext: "tsv")
+        for row in arrays {
+            let v = (se:row[1], deng:row[2], hu:row[3], yun:row[4])
+            mc_finals[row[0]] = v;
+        }
+        arrays = Orthography.loadArrays("orthography_mc_bieng_sjyix", ext: "tsv")
+        for row in arrays {
+            let chats:[Character] = Array(row[1].characters)
+            for char in chats {
+                mc_bieng_siyix[String(char)] = row[0];
+            }
+        }
+        
         
         // pu_pinyin
-        var arrays = Orthography.loadArrays("orthography_pu_pinyin", ext: "tsv")
+        arrays = Orthography.loadArrays("orthography_pu_pinyin", ext: "tsv")
         for row in arrays {
             let k = "\(row[1])\(row[2])"
             let v = (combined:row[0], base:row[1], tone:row[2])
@@ -84,6 +118,76 @@ class Orthography: NSObject {
 
         
     }
+    
+    // mc
+    static func displayMC(origin:String?) -> String? {
+        // 简单实现
+        
+        guard var varOrigin = origin where !varOrigin.isEmpty else {
+            return nil
+        }
+        
+        // tone
+        var tone = 0
+        let lastStr = String(varOrigin.characters.last!)
+        switch lastStr {
+        case "x":
+            tone = 1
+            varOrigin = varOrigin.stringByReplacingOccurrencesOfString(lastStr, withString: "")
+            break
+        case "h":
+            tone = 2
+            varOrigin = varOrigin.stringByReplacingOccurrencesOfString(lastStr, withString: "")
+            break
+        case "d":
+            tone = 2
+            break
+        case "p":
+            tone = 3
+            varOrigin = varOrigin.stringByReplacingOccurrencesOfString(lastStr, withString: "m")
+            break
+        case "t":
+            tone = 3
+            varOrigin = varOrigin.stringByReplacingOccurrencesOfString(lastStr, withString: "n")
+            break
+        case "k":
+            tone = 3
+            varOrigin = varOrigin.stringByReplacingOccurrencesOfString(lastStr, withString: "ng")
+            break
+            
+        default:
+            break
+        }
+
+        // 切割声部韵部
+        
+        let initialsDict = Orthography.sharedInstance.mc_initials
+        let initialsDictKeys = Orthography.sharedInstance.mc_initials_keys
+        
+        var start = "";
+        var end = "";
+        
+        for key in initialsDictKeys {
+            if varOrigin.hasPrefix(key) {
+                start = key;
+                end = varOrigin.stringByReplacingOccurrencesOfString(start, withString: "")
+                break
+            }
+        }
+        
+        start = initialsDict[start] ?? "*"
+        
+        let endTuple = Orthography.sharedInstance.mc_finals[end]! // ?? (se:"*", deng:"*", hu:"*", yun:"*")
+        
+        let range = endTuple.yun.startIndex.advancedBy(tone)
+        let yun = String(endTuple.yun[range])
+        let yunDiao = Orthography.sharedInstance.mc_bieng_siyix[yun] ?? "*"
+        
+        end = "\(endTuple.se)\(yun)\(endTuple.deng)\(endTuple.hu) \(yunDiao)"
+        
+        return "\(origin!)(\(start)\(end))"
+    }
+    
 
     // pu
     static func displayPU(origin:String?) -> String? {

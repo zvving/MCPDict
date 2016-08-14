@@ -32,7 +32,7 @@ class DictCell: UITableViewCell {
         
         labelHZ.text = model.hz
         labelUnicode.text = "U+\(model.unicodeString)"
-        labelMC.text = model.mc
+        labelMC.text = Orthography.displayMC(model.mc)
         labelPU.text = Orthography.displayPU(model.pu)
         labelCT.text = model.ct
         labelSH.text = model.sh

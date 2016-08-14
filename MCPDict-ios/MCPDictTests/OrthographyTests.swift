@@ -20,6 +20,20 @@ class OrthographyTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    func testMC() {
+        let inputs = [("nrix", "nrix(娘止止三開 上声4紙)"),
+                   ("ngax", "ngax(疑果哿一開 上声20哿)"),
+                   ("tha", "tha(透果歌一開 下平5歌)"),
+                   ]
+        
+        
+        for input in inputs {
+            let s = Orthography.displayMC(input.0)
+            let b = s == input.1
+            assert(b, "音标错啦")
+        }
+    }
 
     func testPU() {
         let pys = [("ni1", "nī"),
