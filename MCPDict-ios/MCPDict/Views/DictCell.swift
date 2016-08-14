@@ -38,7 +38,7 @@ class DictCell: UITableViewCell {
         labelSH.text = model.sh
         labelMN.text = model.mn
         labelKR.text = model.kr
-        labelVN.text = model.vn
+        labelVN.text = Orthography.displayVN(model.vn)
         labelJPGO.text = model.jp_go
         labelJPKAN.text = model.jp_kan
         labelJPTOU.text = model.jp_tou

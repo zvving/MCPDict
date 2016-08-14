@@ -14,11 +14,16 @@ class Orthography: NSObject {
     static let sharedInstance = Orthography()
     
     
+    // pu
     var pu_pinyin: [String:(combined:String, base:String, tone:String)]
     
     var pu_bopomofo_partial: [String:String]
     var pu_bopomofo_whole: [String:String]
     var pu_bopomofo_tone: [String:String]
+    
+    // vn
+    
+    var vn: [String:(combined:String, base:String, tone:String)]
 
     
     private override init() {
@@ -28,23 +33,29 @@ class Orthography: NSObject {
         pu_bopomofo_whole = [:]
         pu_bopomofo_tone = [:]
         
-        /// orthography_pu_pinyin
-        let arrays = Orthography.loadArrays("orthography_pu_pinyin", ext: "tsv")
+        vn = [:]
         
-//        var rs:[String:(combined:String, base:String, tone:String)] = [:]
+        // pu_pinyin
+        var arrays = Orthography.loadArrays("orthography_pu_pinyin", ext: "tsv")
         for row in arrays {
             let k = "\(row[1])\(row[2])"
             let v = (combined:row[0], base:row[1], tone:row[2])
             pu_pinyin[k] = v;
         }
         
-        /// orthography_pu_bopomofo
-//        let arrays_pu_bopomofo = Orthography.loadFileContent("orthography_pu_bopomofo", ext: "tsv")
+        // vn
+        arrays = Orthography.loadArrays("orthography_vn", ext: "tsv")
+        for row in arrays {
+            let k = "\(row[1])\(row[2])"
+            let v = (combined:row[0], base:row[1], tone:row[2])
+            vn[k] = v;
+        }
         
 
         
     }
 
+    // pu
     static func displayPU(origin:String) -> String {
         var varOrigin = origin
         guard let match = varOrigin.rangeOfString("[1234_]", options: .RegularExpressionSearch) else {
@@ -92,12 +103,31 @@ class Orthography: NSObject {
         return varOrigin
     }
     
+    // vn
+    static func displayVN(origin:String) -> String {
+        // 这块 android 实现没看懂, 先简单实现
+
+        var varOrigin = origin;
+        
+        let vnDict = Orthography.sharedInstance.vn
+        for key in vnDict.keys {
+            varOrigin = varOrigin.stringByReplacingOccurrencesOfString(
+                key,
+                withString: (vnDict[key]?.combined)!)
+        }
+        
+        return varOrigin
+    }
+
+    
+    // common
+    
     private static func loadFileContent(name:String, ext:String) -> String {
         return try! String(contentsOfFile: NSBundle.mainBundle().pathForResource(name, ofType: ext)!, encoding: NSUTF8StringEncoding)
     }
     
     private static func loadArrays(fileName:String, ext:String) -> [[String]] {
-        let content = Orthography.loadFileContent("orthography_pu_pinyin", ext: "tsv")
+        let content = Orthography.loadFileContent(fileName, ext: ext)
         
         var rows = content.componentsSeparatedByString("\n")
         rows = rows.map({

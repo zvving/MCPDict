@@ -81,6 +81,11 @@ class DictionaryViewController: UIViewController, UITextFieldDelegate, UITableVi
         }
         
         searchMode = SearchMode.HZ
+        
+        // todo: for test
+        
+        self.tfSearchText.text = "你我"
+        self.researchAction()
     }
 
     override func didReceiveMemoryWarning() {

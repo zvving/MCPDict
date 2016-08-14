@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D13E3EC1D6010940008132A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0D13E3EB1D6010940008132A /* README.md */; };
 		0D2519AB1CDB8F4300D0D9BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D2519A91CDB8F4300D0D9BB /* Main.storyboard */; };
 		0D2519B01CDB8F4300D0D9BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D2519AE1CDB8F4300D0D9BB /* LaunchScreen.storyboard */; };
 		0D2519BB1CDB8F4300D0D9BB /* MCPDictTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2519BA1CDB8F4300D0D9BB /* MCPDictTests.swift */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		007D700E8B4A678374582A5A /* Pods-MCPDict.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCPDict.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCPDict/Pods-MCPDict.release.xcconfig"; sourceTree = "<group>"; };
+		0D13E3EB1D6010940008132A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0D2519A01CDB8F4300D0D9BB /* MCPDict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCPDict.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2519AA1CDB8F4300D0D9BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D2519AF1CDB8F4300D0D9BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		0D2519971CDB8F4300D0D9BB = {
 			isa = PBXGroup;
 			children = (
+				0D13E3EB1D6010940008132A /* README.md */,
 				0D46246E1D03CA2A00249E2E /* Resource */,
 				0D2519A21CDB8F4300D0D9BB /* MCPDict */,
 				0D2519B91CDB8F4300D0D9BB /* MCPDictTests */,
@@ -564,6 +567,7 @@
 			files = (
 				0D254E9B1D16802300D2E318 /* Orthography.swift in Sources */,
 				0D2519D91CDB963500D0D9BB /* AppDelegate.swift in Sources */,
+				0D13E3EC1D6010940008132A /* README.md in Sources */,
 				0D46247B1D03FBEB00249E2E /* DBHelper.swift in Sources */,
 				0D4624831D040F8A00249E2E /* DictCell.swift in Sources */,
 				0DBE17471D06A0700010A304 /* String-Extensions.swift in Sources */,

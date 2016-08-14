@@ -21,7 +21,7 @@ class OrthographyTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample2() {
+    func testPU() {
         let pys = [("ni1", "nī"),
                    ("wo3", "wǒ"),
                    ("gui2", "guí"),
@@ -38,9 +38,19 @@ class OrthographyTests: XCTestCase {
             let b = s == py.1
             assert(b, "音标错啦")
         }
+    }
+    
+    func testVN() {
+        let vns = [("nhix,neex", "nhĩ,nễ"),
+                   ("ngax", "ngã"),
+                   ]
         
         
-        
+        for vn in vns {
+            let s = Orthography.displayVN(vn.0)
+            let b = s == vn.1
+            assert(b, "音标错啦")
+        }
     }
 
     func testPerformanceExample() {
