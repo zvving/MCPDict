@@ -52,6 +52,22 @@ class OrthographyTests: XCTestCase {
             assert(b, "音标错啦")
         }
     }
+    
+    func testJP() {
+        let jps = [("*ga*", "*ガ*"),
+                   ("|ni|", "|ニ|"),
+                   ("zi(di)", "ジ(ヂ)"),
+                   ]
+        
+        
+        for jp in jps {
+            let s = Orthography.displayJP(jp.0)
+            let b = s == jp.1
+            assert(b, "音标错啦")
+        }
+    }
+    
+
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

@@ -24,6 +24,16 @@ class Orthography: NSObject {
     // vn
     
     var vn: [String:(combined:String, base:String, tone:String)]
+    
+    // jp
+    
+    // 日本式羅馬字
+    var jp_nippon: [String:(hiragana:String, katakana:String)]
+    var jp_nippon_keys: [String]
+    
+    // 黑本式羅馬字
+    var jp_hepburn: [String:(hiragana:String, katakana:String)]
+    var jp_hepburn_keys: [String]
 
     
     private override init() {
@@ -34,6 +44,12 @@ class Orthography: NSObject {
         pu_bopomofo_tone = [:]
         
         vn = [:]
+        
+        jp_nippon = [:]
+        jp_nippon_keys = []
+        jp_hepburn = [:]
+        jp_hepburn_keys = []
+        
         
         // pu_pinyin
         var arrays = Orthography.loadArrays("orthography_pu_pinyin", ext: "tsv")
@@ -51,13 +67,31 @@ class Orthography: NSObject {
             vn[k] = v;
         }
         
+        // jp
+        arrays = Orthography.loadArrays("orthography_jp", ext: "tsv")
+        for row in arrays {
+            let v = (hiragana:row[0], katakana:row[1])
+            jp_nippon[row[2]] = v;
+            jp_hepburn[row[3]] = v;
+        }
+        // 音标字符从长到短排序, 转换时优先转换长音标
+        jp_nippon_keys = jp_nippon.keys.sort { (s0, s1) -> Bool in
+            s0.characters.count > s1.characters.count
+        }
+        jp_hepburn_keys = jp_hepburn.keys.sort { (s0, s1) -> Bool in
+            s0.characters.count > s1.characters.count
+        }
 
         
     }
 
     // pu
-    static func displayPU(origin:String) -> String {
-        var varOrigin = origin
+    static func displayPU(origin:String?) -> String? {
+        
+        guard var varOrigin = origin where !varOrigin.isEmpty else {
+            return nil
+        }
+        
         guard let match = varOrigin.rangeOfString("[1234_]", options: .RegularExpressionSearch) else {
             print("none:\(varOrigin)")
             return varOrigin
@@ -104,16 +138,40 @@ class Orthography: NSObject {
     }
     
     // vn
-    static func displayVN(origin:String) -> String {
+    static func displayVN(origin:String?) -> String? {
+        guard var varOrigin = origin where !varOrigin.isEmpty else {
+            return nil
+        }
         // 这块 android 实现没看懂, 先简单实现
-
-        var varOrigin = origin;
         
         let vnDict = Orthography.sharedInstance.vn
         for key in vnDict.keys {
             varOrigin = varOrigin.stringByReplacingOccurrencesOfString(
                 key,
                 withString: (vnDict[key]?.combined)!)
+        }
+        
+        return varOrigin
+    }
+    
+    // jp
+    static func displayJP(origin:String?) -> String? {
+        // 简单实现
+        
+        guard var varOrigin = origin where !varOrigin.isEmpty else {
+            return nil
+        }
+        
+        // todo: from config
+        let jpDict = Orthography.sharedInstance.jp_nippon
+        let keys = Orthography.sharedInstance.jp_nippon_keys
+        
+        for key in keys {
+            // todo: from config
+            let str = jpDict[key]?.katakana ?? "*"
+            varOrigin = varOrigin.stringByReplacingOccurrencesOfString(
+                key,
+                withString: str)
         }
         
         return varOrigin

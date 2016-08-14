@@ -39,11 +39,11 @@ class DictCell: UITableViewCell {
         labelMN.text = model.mn
         labelKR.text = model.kr
         labelVN.text = Orthography.displayVN(model.vn)
-        labelJPGO.text = model.jp_go
-        labelJPKAN.text = model.jp_kan
-        labelJPTOU.text = model.jp_tou
-        labelJPKWAN.text = model.jp_kwan
-        labelJPOTHER.text = model.jp_other
+        labelJPGO.text = Orthography.displayJP(model.jp_go)
+        labelJPKAN.text = Orthography.displayJP(model.jp_kan)
+        labelJPTOU.text = Orthography.displayJP(model.jp_tou)
+        labelJPKWAN.text = Orthography.displayJP(model.jp_kwan)
+        labelJPOTHER.text = Orthography.displayJP(model.jp_other)
         
         let imgName = model.hasFavorited ? "ic_star_yellow" : "ic_star_white"
         imgViewStar.image = UIImage(named: imgName)
