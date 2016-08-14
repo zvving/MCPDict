@@ -23,23 +23,25 @@ class Orthography: NSObject {
     
     private override init() {
         
+        pu_pinyin = [:]
+        pu_bopomofo_partial = [:]
+        pu_bopomofo_whole = [:]
+        pu_bopomofo_tone = [:]
+        
         /// orthography_pu_pinyin
         let arrays = Orthography.loadArrays("orthography_pu_pinyin", ext: "tsv")
         
-        var rs:[String:(combined:String, base:String, tone:String)] = [:]
+//        var rs:[String:(combined:String, base:String, tone:String)] = [:]
         for row in arrays {
             let k = "\(row[1])\(row[2])"
             let v = (combined:row[0], base:row[1], tone:row[2])
-            rs[k] = v
+            pu_pinyin[k] = v;
         }
         
         /// orthography_pu_bopomofo
 //        let arrays_pu_bopomofo = Orthography.loadFileContent("orthography_pu_bopomofo", ext: "tsv")
         
-        pu_pinyin = [:]
-        pu_bopomofo_partial = [:]
-        pu_bopomofo_whole = [:]
-        pu_bopomofo_tone = [:]
+
         
     }
 
