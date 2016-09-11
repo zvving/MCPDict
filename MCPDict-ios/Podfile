@@ -11,7 +11,8 @@ pod 'SQLite.swift', '~> 0.10.1'
 pod 'Permission'
 pod 'ChameleonFramework/Swift'
 pod 'CSwiftV', '~> 0.0.5'
-
+pod 'Eureka', '~> 1.7'
+pod 'Prephirences'
 
 def testing_pods
     pod 'Quick'

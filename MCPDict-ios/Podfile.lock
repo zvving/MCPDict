@@ -4,7 +4,14 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - CSwiftV (0.0.5)
+  - Eureka (1.7.0)
   - Permission (1.4)
+  - Prephirences (2.2.1):
+    - Prephirences/Core (= 2.2.1)
+    - Prephirences/Keys (= 2.2.1)
+  - Prephirences/Core (2.2.1)
+  - Prephirences/Keys (2.2.1):
+    - Prephirences/Core
   - ReactiveCocoa (4.1.0):
     - ReactiveCocoa/UI (= 4.1.0)
     - Result (~> 2.0)
@@ -24,7 +31,9 @@ DEPENDENCIES:
   - Alamofire (~> 3.3.1)
   - ChameleonFramework/Swift
   - CSwiftV (~> 0.0.5)
+  - Eureka (~> 1.7)
   - Permission
+  - Prephirences
   - ReactiveCocoa (~> 4.1.0)
   - SQLite.swift (~> 0.10.1)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -42,12 +51,14 @@ SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CSwiftV: 2560532e2e5b04d95c36b0f49a8dc745071fa525
+  Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
   Permission: d34ba40941c4fa976a2bd326db84a5d791d0c397
+  Prephirences: 6496a39db002da1a36d4e7b1776272bd4704fe10
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 41187395f64ab3866a000c1dad8b543e410f9b08
+PODFILE CHECKSUM: 97af6ae7ac846be4dde75b5e7ec21b8d2f3eec93
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.0.beta.2
