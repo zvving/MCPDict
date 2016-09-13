@@ -40,6 +40,7 @@
 		0D4624971D0423AA00249E2E /* orthography_pu_bopomofo.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 0D46248D1D0423AA00249E2E /* orthography_pu_bopomofo.tsv */; };
 		0D4624981D0423AA00249E2E /* orthography_pu_pinyin.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 0D46248E1D0423AA00249E2E /* orthography_pu_pinyin.tsv */; };
 		0D4624991D0423AA00249E2E /* orthography_vn.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 0D46248F1D0423AA00249E2E /* orthography_vn.tsv */; };
+		0D7EDC3C1D862BB8001AC689 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7EDC3B1D862BB8001AC689 /* SettingsViewController.swift */; };
 		0DBE17441D069DE60010A304 /* DictProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE17431D069DE60010A304 /* DictProviderTests.swift */; };
 		0DBE17471D06A0700010A304 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE17461D06A0700010A304 /* String-Extensions.swift */; };
 		0DBE17491D06A3390010A304 /* String-ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE17481D06A3390010A304 /* String-ExtensionsTests.swift */; };
@@ -101,6 +102,7 @@
 		0D46248D1D0423AA00249E2E /* orthography_pu_bopomofo.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = orthography_pu_bopomofo.tsv; sourceTree = "<group>"; };
 		0D46248E1D0423AA00249E2E /* orthography_pu_pinyin.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = orthography_pu_pinyin.tsv; sourceTree = "<group>"; };
 		0D46248F1D0423AA00249E2E /* orthography_vn.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = orthography_vn.tsv; sourceTree = "<group>"; };
+		0D7EDC3B1D862BB8001AC689 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0DBE17431D069DE60010A304 /* DictProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictProviderTests.swift; path = MCPDictTests/DictProviderTests.swift; sourceTree = SOURCE_ROOT; };
 		0DBE17461D06A0700010A304 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String-Extensions.swift"; path = "Lib/String-Extensions.swift"; sourceTree = "<group>"; };
 		0DBE17481D06A3390010A304 /* String-ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				0D2519D41CDB903300D0D9BB /* DictionaryViewController.swift */,
 				0D2519D61CDB904D00D0D9BB /* FavoriteViewController.swift */,
+				0D7EDC3B1D862BB8001AC689 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 			files = (
 				0D254E9B1D16802300D2E318 /* Orthography.swift in Sources */,
 				0D2519D91CDB963500D0D9BB /* AppDelegate.swift in Sources */,
+				0D7EDC3C1D862BB8001AC689 /* SettingsViewController.swift in Sources */,
 				0D13E3EC1D6010940008132A /* README.md in Sources */,
 				0D46247B1D03FBEB00249E2E /* DBHelper.swift in Sources */,
 				0D4624831D040F8A00249E2E /* DictCell.swift in Sources */,
